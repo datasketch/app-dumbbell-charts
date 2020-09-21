@@ -1,0 +1,16 @@
+columns:
+  label: columns
+  inputs:
+    - chooseColumns
+titles:
+  label: titles
+  inputs:
+    - title
+    - subtitle
+    - caption
+colours:
+  label: choose_colours
+  inputs:
+    - colour_method
+    - palette
+    - colour_custom
