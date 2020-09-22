@@ -1,16 +1,15 @@
-columns:
-  label: columns
-  inputs:
-    - chooseColumns
 titles:
   label: titles
   inputs:
     - title
     - subtitle
+    - hor_title
+    - ver_title
     - caption
 colours:
   label: choose_colours
   inputs:
+    - background_color
     - colour_method
     - palette
     - colour_custom

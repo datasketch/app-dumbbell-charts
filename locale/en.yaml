@@ -21,18 +21,15 @@ google_sh_pg_lb: Sheet
 title: Title
 subtitle: Subtitle
 caption: Credits
+hor_title: X axis label
+ver_title: Y axis label
 chooseColumns: Select one categorical and two numerical columns
-fillval: Set flow direction for colouring of flows
-left_to_right: Left to right
-right_to_left: Right to left
-colour_method: Select option for colouring
-palette: Choose colour palette
-colourpalette: Colour palette
+colour_method: Select option for coloring
+palette: Choose color palette
+colourpalette: Color palette
+background_color: Choose background color
 custom: Custom
-black: Black
-white: White
 colour_custom: Select custom colours
-stratumColour: Choose colour of stratum
 download_plot: Download plot
 en: English
 de: German

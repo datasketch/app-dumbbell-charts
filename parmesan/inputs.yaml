@@ -10,20 +10,24 @@ subtitle:
   input_params:
     label: subtitle
     value:
+hor_title:
+  show: true
+  input_type: textInput
+  input_params:
+    label: hor_title
+    value: 
+ver_title:
+  show: true
+  input_type: textInput
+  input_params:
+    label: ver_title
+    value: 
 caption:
   show: true
   input_type: textInput
   input_params:
     label: caption
     value: 
-chooseColumns:
-  show: true
-  input_type: selectInput
-  input_params:
-    label: chooseColumns
-    choices: datasetColumnChoices()
-    selected: datasetColumnSelected()
-    multiple: true
 colour_method:
   show: true
   input_type: selectInput
@@ -31,6 +35,12 @@ colour_method:
     label: colour_method
     choices: colourMethodChoices()
     selected: colourpalette
+background_color:
+  show: true
+  input_type: colorPaletteInput
+  input_params:
+    label: background_color
+    colors: background()
 palette:
   show: true
   show_if:

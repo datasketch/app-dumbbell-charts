@@ -2,9 +2,7 @@
 library(shiny)
 library(shinyWidgets)
 library(dplyr)
-library(titanic)
 library(ggplot2)
-library(ggforce)
 library(RColorBrewer)
 library(scales)
 library(tidyverse)
@@ -19,6 +17,7 @@ library(hotr)
 library(parmesan)
 library(paletero)
 library(hgchmagic)
+library(dsthemer)
 
 # Define UI for app ----
 ui <- panelsPage(useShi18ny(),
@@ -29,7 +28,12 @@ ui <- panelsPage(useShi18ny(),
                  panel(title = ui_("dataset"),
                        collapsed = FALSE,
                        width = 300,
-                       body = uiOutput("dataset")),
+                       body = div(
+                         div(
+                           uiOutput("select_var"),
+                           uiOutput("dataset")
+                         )
+                       )),
                  panel(title = ui_("options"),
                        width = 250,
                        color = "chardonnay",
@@ -100,6 +104,13 @@ server <- function(input, output) {
     suppressWarnings(hotr("hotr_input", data = inputData(), options = list(height = 470)))
   })
 
+  output$select_var <- renderUI({
+    selectInput(inputId = "chooseColumns", label= i_("chooseColumns", lang()),
+                choices = datasetColumnChoices(),
+                selected = datasetColumnSelected(),
+                multiple = TRUE)
+  })
+
   data_fringe <- reactive({
     suppressWarnings( hotr::hotr_fringe(input$hotr_input))
   })
@@ -160,12 +171,9 @@ server <- function(input, output) {
     colours
   })
 
-  fillFlow <- reactive({
-    flow <- c("from", "to")
-    names(flow) <- i_(c("left_to_right", "right_to_left"), lang())
-    flow
+  background <- reactive({
+    dsthemer_get("datasketch")$background_color
   })
-
 
   plot_data <- reactive({
     req(input$chooseColumns)
@@ -180,11 +188,11 @@ server <- function(input, output) {
     } else if(input$colour_method == "custom"){
       palette <- customColours()
     }
-    # browser()
     if(is.null(palette)) return()
     hgch_dumbbell_CatNumNum(plot_data(), palette_colors = palette,
                        title = input$title, subtitle = input$subtitle, caption = input$caption,
-                       ver_title = "")
+                       ver_title = input$hor_title, hor_title = input$ver_title,
+                       background_color = input$background_color)
   })
 
   output$dumbbellChart <- renderHighchart({
