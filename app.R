@@ -189,10 +189,12 @@ server <- function(input, output) {
       palette <- customColours()
     }
     if(is.null(palette)) return()
+    browser()
     hgch_dumbbell_CatNumNum(plot_data(), palette_colors = palette,
                        title = input$title, subtitle = input$subtitle, caption = input$caption,
                        ver_title = input$hor_title, hor_title = input$ver_title,
-                       background_color = input$background_color)
+                       background_color = input$background_color) %>%
+      hc_xAxis(labels = list(step = 1))
   })
 
   output$dumbbellChart <- renderHighchart({

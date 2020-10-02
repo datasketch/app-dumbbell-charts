@@ -1,7 +1,7 @@
 upload_data: Carregar dados
 dataset: Conjunto de dados
 options: Opções
-viz: Diagrama Sankey
+viz: Diagrama Dumbbell
 sample: Amostra de dados
 sample_lb: Seleccionar uma amostra de dados
 sample_titanic_name: Titanic
